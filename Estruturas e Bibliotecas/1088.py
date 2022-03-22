@@ -13,48 +13,32 @@ class Arvore:
     def add(self, valor):
         if self.raiz is None:
             self.raiz = No(valor)
+            return 0
         else:
-            self.adicionar_elemento(self.raiz, valor)
+            return self.adicionar_elemento(self.raiz, valor)
 
     def adicionar_elemento(self, no, valor):
         if no.valor > valor:
-            no.conteudo += 1
             if no.filho_esquerdo is None:
                 no.filho_esquerdo = No(valor)
-            else:
-                self.adicionar_elemento(no.filho_esquerdo, valor)
-        else:
-            if no.filho_direito is None:
-                no.filho_direito = No(valor)
-            else:
-                self.adicionar_elemento(no.filho_direito, valor)
-
-    def quant_menores(self, valor):
-        if self.raiz is None:
-            return 0
-        else:
-            return self.verificar_quantidade_menores(self.raiz, valor)
-
-    def verificar_quantidade_menores(self, no, valor):
-        if no.valor > valor:
-            if no.filho_esquerdo is None:
-                return 0
-            else:
-                return self.verificar_quantidade_menores(no.filho_esquerdo, valor)
-        else:
-            if no.filho_direito is None:
                 return no.conteudo
             else:
-                return no.conteudo + self.verificar_quantidade_menores(no.filho_direito, valor)
+                return no.conteudo + self.adicionar_elemento(no.filho_esquerdo, valor)
+        else:
+            no.conteudo += 1
+            if no.filho_direito is None:
+                no.filho_direito = No(valor)
+                return 0
+            else:
+                return self.adicionar_elemento(no.filho_direito, valor)
 
 
 entrada = [int(i) for i in input().split()]
 while entrada[0] != 0:
     arvore = Arvore()
     soma = 0
-    for numero in entrada[entrada[0]:0:-1]:
-        soma += arvore.quant_menores(numero)
-        arvore.add(numero)
+    for numero in entrada[1:]:
+        soma += arvore.add(numero)
     if soma % 2 == 0:
         print("Carlos")
     else:
