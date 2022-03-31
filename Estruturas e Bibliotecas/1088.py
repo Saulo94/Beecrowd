@@ -43,4 +43,5 @@ while entrada[0] != 0:
         print("Carlos")
     else:
         print("Marcelo")
+
     entrada = [int(i) for i in input().split()]
