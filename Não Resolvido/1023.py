@@ -1,14 +1,6 @@
 from bisect import insort
+from array import array
 from time import time
-
-
-def truncar(decimal):
-    p1, p2 = decimal.split(".")
-    tam_p2 = len(p2)
-    if tam_p2 >= 2:
-        return p1 + "." + p2[:2]
-    else:
-        return p1 + "." + p2 + "0" * (2 - tam_p2)
 
 
 lista_prints = []
@@ -17,9 +9,8 @@ inicio = time()
 index = 1
 while True:
     dict_consumo = {}
-    lista_consumo = []
-    total_consumo = 0
-    total_pessoas = 0
+    lista_consumo = array('I')
+    total_consumo, total_pessoas = 0, 0
 
     for pessoas, consumo in (map(int, input().split()) for _ in range(qt_imoveis)):
         total_pessoas += pessoas
@@ -36,19 +27,19 @@ while True:
     if qt_imoveis:
         lista_prints.append("Cidade# {0}:\n"
                             "{1}\n"
-                            "Consumo medio: {2} m3.\n\n".
+                            "Consumo medio: {2:.2f} m3.\n\n".
                             format(index,
                                    " ".join("{0}-{1}".format(dict_consumo[cons], cons) for cons in lista_consumo),
-                                   truncar(str(total_consumo / total_pessoas))))
+                                   int(total_consumo * 100 / total_pessoas) / 100))
         index += 1
     else:
         lista_prints.append("Cidade# {0}:\n"
                             "{1}\n"
-                            "Consumo medio: {2} m3.\n".
+                            "Consumo medio: {2:.2f} m3.\n".
                             format(index,
                                    " ".join("{0}-{1}".format(dict_consumo[cons], cons) for cons in lista_consumo),
-                                   truncar(str(total_consumo / total_pessoas))))
+                                   int(total_consumo * 100 / total_pessoas) / 100))
         break
 
 print("".join(lista_prints))
-print(time() - inicio)
+print((time() - inicio) * 100)
