@@ -31,6 +31,8 @@ while entrada != '0':
                 (0 < ataq_esquerda[0] < 9 and 0 < ataq_esquerda[1] < 9):
             if ataq_esquerda not in pos_peoes:
                 qt_movimentos += 1
+        else:
+            qt_movimentos += 1
 
     print("Caso de Teste #{0}: {1} movimento(s).".format(teste, qt_movimentos))
 
