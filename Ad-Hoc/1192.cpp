@@ -3,7 +3,6 @@ using namespace std;
 
 int main(){
     string entrada;
-    //array<char, 3> entrada;
     int qt_casos, resultado, num1, num2;
     int i;
 
