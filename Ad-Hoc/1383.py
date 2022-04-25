@@ -1,54 +1,50 @@
-quat_matriz = int(input())
-lista_final = []
-i = 0
-while i < quat_matriz:
-    res = True
-    matriz = []
-    for j in range(9):
-        matriz.append(list(int(k) for k in input().split()))
-        lista_sub = list(matriz[-1])
-        lista_sub.sort()
-        if lista_sub != [1, 2, 3, 4, 5, 6, 7, 8, 9]:
-            res = False
+from itertools import product
 
-    if res:
-        lista_sub = []
-        j = 0
-        while j < 9:
-            for k in matriz:
-                lista_sub.append(k[j])
-            lista_sub.sort()
-            if lista_sub != [1, 2, 3, 4, 5, 6, 7, 8, 9]:
-                res = False
-                break
+
+def checar_quadrantes(matriz):
+    intervalos = [range(0, 3), range(3, 6), range(6, 9)]
+    for int_lin, int_col in product(intervalos, intervalos):
+        set_quadrante = set()
+        for i in int_lin:
+            for k in int_col:
+                if matriz[i][k] in set_quadrante:
+                    return False
+                else:
+                    set_quadrante.add(matriz[i][k])
+    return True
+
+
+def checar_linhas(matriz):
+    for k in range(9):
+        matriz.append([])
+        set_linha = set()
+
+        for numero in map(int, input().split()):
+            if numero in set_linha:
+                return False
             else:
-                lista_sub = []
-            j += 1
-    if res:
-        i_l = [[0, 2], [3, 5], [6, 8]]
-        i_c = [[0, 2], [3, 5], [6, 8]]
-        for j in i_l:
-            for k in i_c:
-                lista_sub = []
-                l = j[0]
-                while l <= j[1]:
-                    c = k[0]
-                    while c <= k[1]:
-                        lista_sub.append(matriz[l][c])
-                        c += 1
-                    l += 1
-                lista_sub.sort()
-                if lista_sub != [1, 2, 3, 4, 5, 6, 7, 8, 9]:
-                    res = False
-                    break
-            if not res:
-                break
-    if res:
-        lista_final.append([i + 1, "SIM"])
+                matriz[k].append(numero)
+    return True
+
+
+def checar_colunas(matriz):
+    for j in range(9):
+        set_colunas = set()
+        for linha in matriz:
+            if linha[j] in set_colunas:
+                return False
+            else:
+                set_colunas.add(linha[j])
+    return True
+
+
+quat_matriz = int(input())
+for i in range(1, quat_matriz + 1):
+    matriz = []
+
+    print("Instancia", i)
+    if checar_linhas(matriz) and checar_colunas(matriz) and checar_quadrantes(matriz):
+        print("SIM")
     else:
-        lista_final.append([i + 1, "NAO"])
-    i += 1
-for i in lista_final:
-    print("Instancia " + str(i[0]))
-    print(i[1])
+        print("NAO")
     print("")
