@@ -1,17 +1,12 @@
+import numpy as np
+
 linhas, colunas = map(int, input().split())
-
 maior = 0
-matriz = []
+matriz = np.empty((linhas, colunas), dtype=np.uint32)
 for i in range(linhas):
-    matriz.append(list(map(int, input().split())))
-    soma = sum(matriz[-1])
-    if soma > maior:
-        maior = soma
-for i in range(colunas):
-    soma = 0
-    for k in range(linhas):
-        soma += matriz[k][i]
+    matriz[i] = np.array(list(map(int, input().split())))
+    soma = sum(matriz[i])
     if soma > maior:
         maior = soma
 
-print(maior)
+print(max(max(matriz.sum(axis=0)), maior))
