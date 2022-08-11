@@ -1,5 +1,4 @@
-//var input = require('fs').readFileSync('/dev/stdin', 'utf8');
-var input = "-86 -92\n36 -61\n57 -27\n2 2";
+var input = require('fs').readFileSync('/dev/stdin', 'utf8');
 var lines = input.split('\n');
 
 for(var i = 0; i < lines.length; i++){
