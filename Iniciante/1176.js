@@ -17,7 +17,6 @@ function fibonaci(numero){
 }
 
 var input = require('fs').readFileSync('/dev/stdin', 'utf8');
-//var input = "6\n10\n1\n2\n3\n4\n5";
 var lines = input.split('\n');
 
 var quant_casos = parseInt(lines[0]);

@@ -1,5 +1,4 @@
-//var input = require('fs').readFileSync('/dev/stdin', 'utf8');
-var input = "4\n6\n5\n28\n1";
+var input = require('fs').readFileSync('/dev/stdin', 'utf8');
 var lines = input.split('\n');
 
 var quant_casos = parseInt(lines[0]);

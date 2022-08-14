@@ -1,5 +1,4 @@
-//var input = require('fs').readFileSync('/dev/stdin', 'utf8');
-var input = "-1310.0000000199111";
+var input = require('fs').readFileSync('/dev/stdin', 'utf8');
 var lines = input.split('\n');
 
 var numero = lines[0];
