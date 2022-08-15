@@ -3,3 +3,5 @@ FROM products, providers, categories
 WHERE products.id_providers = providers.id
 AND products.id_categories = categories.id
 AND categories.id = 6;
+
+$$ language plpgsql;
