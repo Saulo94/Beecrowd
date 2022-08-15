@@ -24,4 +24,4 @@ VALUES
   -- DROP TABLE customers; --
 
   /* RESULTADO */
-SELECT name, street FROM customers WHERE city = 'Porto Alegre';
+  -- SELECT name, street FROM customers WHERE city = 'Porto Alegre';

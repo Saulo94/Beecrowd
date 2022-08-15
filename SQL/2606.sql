@@ -43,7 +43,7 @@ VALUES
   -- DROP TABLE products, categories; --
 
   /* RESULTADO */
-SELECT products.id, products.name
-FROM products, categories
-WHERE products.id_categories = categories.id
-AND categories.name like 'super%';
+  -- SELECT products.id, products.name
+  -- FROM products, categories
+  -- WHERE products.id_categories = categories.id
+  -- AND categories.name like 'super%';

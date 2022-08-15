@@ -18,5 +18,5 @@ VALUES
   -- DROP TABLE products; --
   
   /* RESULTADO */
-SELECT max(price) AS price, min(price) AS price
-FROM products;
+  -- SELECT max(price) AS price, min(price) AS price
+  -- FROM products;
